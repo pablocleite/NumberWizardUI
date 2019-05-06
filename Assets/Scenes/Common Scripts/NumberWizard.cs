@@ -20,25 +20,28 @@ public class NumberWizard : MonoBehaviour {
     private void StartGame()
     {
         //Adding 1 so that we can pick the MaxNumber number.
-        maxNumber += 1;
-        guess = (maxNumber + minMumber) / 2;
-        guessText.text = guess.ToString();
+        //maxNumber += 1;
+        //guess = (maxNumber + minMumber) / 2;
+        //guessText.text = guess.ToString();
+
+        NextGuess();
+        //Adding 1 so that we can pick the MaxNumber number.
     }
 
     public void OnPressHigher()
     {
-        minMumber = guess;
+        minMumber = guess + 1;
         NextGuess();
     }
 
     public void OnPressLower()
     {
-        maxNumber = guess;
+        maxNumber = guess - 1;
         NextGuess();
     }
 
     private void NextGuess() {
-        guess = (maxNumber + minMumber) / 2;
+    guess = Random.Range(minMumber, maxNumber + 1);
         guessText.text = guess.ToString();
     }
 }
